@@ -1,6 +1,9 @@
+const { Console } = require("@woowacourse/mission-utils");
+const { MESSAGE_MC } = require("../constants/Constants");
 const BaseballGame = require("../model/BaseballGame");
 const BaseballGameView = require("../view/BaseballGameView");
 const generateRandomNumber = require("../utils/RandomNumberGenerator");
+const { Validator } = require("../utils/Validator");
 
 class BaseballGameController {
   #baseballGame;
@@ -13,6 +16,13 @@ class BaseballGameController {
 
   startGame() {
     this.#baseballGameView.displayWelcomeMessage();
+    this.inputNumber();
+  }
+
+  inputNumber() {
+    Console.readLine(MESSAGE_MC.INPUT, (playerInput) => {
+      Validator.validateBaseballInput(playerInput);
+    });
   }
 }
 
