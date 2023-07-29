@@ -1,4 +1,5 @@
 const { Console } = require("@woowacourse/mission-utils");
+const { validateCmdInput, validateNumbersInput } = require("./Validator");
 
 class GameConsole {
   #outputs = {
@@ -33,13 +34,13 @@ class GameConsole {
 
   inputNumbers(callback) {
     Console.readLine(this.#outputs.REQUIRE_NUMBERS, (numbers) => {
-      //validate input
+      validateNumbersInput(numbers);
       return callback(numbers);
     });
   }
   inputCmd(callback) {
     Console.readLine(this.#outputs.REQUIRE_CMD, (cmd) => {
-      //validate input
+      validateCmdInput(cmd);
       return callback(cmd);
     });
   }
