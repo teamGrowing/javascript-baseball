@@ -22,7 +22,27 @@ class BaseballGameController {
   inputNumber() {
     Console.readLine(MESSAGE_MC.INPUT, (playerInput) => {
       Validator.validateBaseballInput(playerInput);
+
+      const playerInputArray = [...playerInput].map((input) => Number(input));
+      this.handlePlayerInputResult(playerInputArray);
     });
+  }
+
+  handlePlayerInputResult(playerInputArray) {
+    const { strikes, balls } =
+      this.#baseballGame.getStrikesAndBalls(playerInputArray);
+
+    this.#baseballGameView.displayResult(strikes, balls);
+
+    if (strikes === 3) {
+      this.endGame();
+    } else {
+      this.inputNumber();
+    }
+  }
+
+  endGame() {
+    this.#baseballGameView.displayGameRestart();
   }
 }
 
