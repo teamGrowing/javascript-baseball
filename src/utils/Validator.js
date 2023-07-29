@@ -12,7 +12,8 @@ class Validator {
   }
 
   static isValidThreeDigitNumber(input) {
-    return Number.isInteger(input) && input >= 100 && input <= 999;
+    const REGEX = /^[1-9]{3}$/;
+    return REGEX.test(input);
   }
 
   static hasNoRepeatedDigits(input) {
