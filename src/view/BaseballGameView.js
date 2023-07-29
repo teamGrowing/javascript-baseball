@@ -7,7 +7,20 @@ class BaseballGameView {
   }
 
   displayResult(strikes, balls) {
-    const message = `${balls}볼 ${strikes} 스트라이크`;
+    let message = "";
+
+    if (strikes === 0 && balls === 0) {
+      message = "낫싱";
+    }
+
+    if (balls > 0) {
+      message += `${balls}볼 `;
+    }
+
+    if (strikes > 0) {
+      message += `${strikes}스트라이크`;
+    }
+
     Console.print(message.trim());
   }
 
