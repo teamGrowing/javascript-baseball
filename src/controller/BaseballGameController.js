@@ -19,12 +19,30 @@ class BaseballGameController {
     this.inputNumber();
   }
 
+  endGame() {
+    this.#baseballGameView.displayGameRestart();
+    this.inputRestartNumber();
+  }
+
   inputNumber() {
     Console.readLine(MESSAGE_MC.INPUT, (playerInput) => {
       Validator.validateBaseballInput(playerInput);
 
       const playerInputArray = [...playerInput].map((input) => Number(input));
       this.handlePlayerInputResult(playerInputArray);
+    });
+  }
+
+  inputRestartNumber() {
+    Console.readLine("", (playerInput) => {
+      const numericInput = Number(playerInput);
+
+      Validator.validateRestartInput(numericInput);
+
+      if (numericInput === 1) {
+        this.#baseballGame.reset();
+        this.startGame();
+      }
     });
   }
 
@@ -39,10 +57,6 @@ class BaseballGameController {
     } else {
       this.inputNumber();
     }
-  }
-
-  endGame() {
-    this.#baseballGameView.displayGameRestart();
   }
 }
 

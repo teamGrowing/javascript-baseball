@@ -1,3 +1,5 @@
+const generateRandomNumber = require("../utils/RandomNumberGenerator");
+
 class BaseballGame {
   #answer;
 
@@ -18,6 +20,10 @@ class BaseballGame {
     }
 
     return { strikes, balls };
+  }
+
+  reset() {
+    this.#answer = generateRandomNumber();
   }
 }
 
