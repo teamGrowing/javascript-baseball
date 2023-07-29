@@ -6,7 +6,10 @@ const MESSAGE_MC = Object.freeze({
 });
 
 const MESSAGE_ERROR = Object.freeze({
-  INPUT: "입력값이 유효하지 않습니다. 서로 다른 숫자 3자리를 입력해주세요.",
+  NO_THREE_DIGIT_NUMBER:
+    "입력값이 유효하지 않습니다. 3자리 숫자를 입력해주세요.",
+  HAS_REPEATED_DIGITS:
+    "입력값이 유효하지 않습니다. 서로 다른 숫자를 입력해주세요.",
   RESTART: "입력값이 유효하지 않습니다. 1, 2 중에 한 개만 입력주세요.",
 });
 
